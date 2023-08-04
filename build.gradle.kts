@@ -1,5 +1,12 @@
+val ktor_version: String by project
+val ktx_html_version: String by project
+
+val kotlin_react_version: String by project
+val kotlin_react_router_version: String by project
+
 plugins {
     kotlin("multiplatform") version "1.9.0"
+    kotlin("plugin.serialization") version "1.9.0"
     application
 }
 
@@ -32,7 +39,12 @@ kotlin {
         }
     }
     sourceSets {
-        val commonMain by getting
+        val commonMain by getting {
+            dependencies {
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
+
+            }
+        }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
@@ -40,18 +52,18 @@ kotlin {
         }
         val jvmMain by getting {
             dependencies {
-                implementation("io.ktor:ktor-server-netty:2.0.2")
-                implementation("io.ktor:ktor-server-html-builder-jvm:2.0.2")
-                implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:0.7.2")
+                implementation("io.ktor:ktor-server-netty:$ktor_version")
+                implementation("io.ktor:ktor-server-html-builder-jvm:$ktor_version")
+                implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:$ktx_html_version")
             }
         }
         val jvmTest by getting
         val jsMain by getting {
             dependencies {
-                implementation("org.jetbrains.kotlin-wrappers:kotlin-react:18.2.0-pre.346")
-                implementation("org.jetbrains.kotlin-wrappers:kotlin-react-dom:18.2.0-pre.346")
+                implementation("org.jetbrains.kotlin-wrappers:kotlin-react:$kotlin_react_version")
+                implementation("org.jetbrains.kotlin-wrappers:kotlin-react-dom:$kotlin_react_version")
                 implementation("org.jetbrains.kotlin-wrappers:kotlin-emotion:11.9.3-pre.346")
-                implementation("org.jetbrains.kotlin-wrappers:kotlin-react-router-dom:6.3.0-pre.346")
+                implementation("org.jetbrains.kotlin-wrappers:kotlin-react-router-dom:$kotlin_react_router_version")
             }
         }
         val jsTest by getting
