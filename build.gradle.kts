@@ -32,6 +32,7 @@ kotlin {
     js {
         binaries.executable()
         browser {
+            @Suppress("DEPRECATION")
             commonWebpackConfig {
                 cssSupport {
                     enabled.set(true)
@@ -53,6 +54,7 @@ kotlin {
         }
         val jvmMain by getting {
             dependencies {
+                implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor_version")
                 implementation("io.ktor:ktor-server-netty:$ktor_version")
                 implementation("io.ktor:ktor-server-html-builder-jvm:$ktor_version")
                 implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:$ktx_html_version")
