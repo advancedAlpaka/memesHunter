@@ -1,3 +1,4 @@
+@file:Suppress("PropertyName")
 val ktor_version: String by project
 val ktx_html_version: String by project
 
