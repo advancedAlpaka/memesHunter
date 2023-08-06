@@ -61,9 +61,10 @@ kotlin {
         val jvmTest by getting
         val jsMain by getting {
             dependencies {
+                implementation("org.jetbrains.kotlin-wrappers:kotlin-extensions:1.0.1-pre.606")
                 implementation("org.jetbrains.kotlin-wrappers:kotlin-react:$kotlin_react_version")
                 implementation("org.jetbrains.kotlin-wrappers:kotlin-react-dom:$kotlin_react_version")
-                implementation("org.jetbrains.kotlin-wrappers:kotlin-emotion:11.9.3-pre.346")
+                implementation("org.jetbrains.kotlin-wrappers:kotlin-emotion:11.11.1-pre.606")
                 implementation("org.jetbrains.kotlin-wrappers:kotlin-react-router-dom:$kotlin_react_router_version")
             }
         }

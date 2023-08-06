@@ -23,9 +23,7 @@ fun Routing.configureWeb() {
         call.respondHtml(HttpStatusCode.OK, HTML::index)
     }
 
-    static("/static") {
-        resources()
-    }
+    staticResources("/static", "resources")
 }
 
 fun Routing.configureApi() {
